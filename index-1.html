@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marché Voisin — Le marché de votre quartier</title>
+<meta name="description" content="Marché Voisin connecte les vendeurs locaux et les acheteurs de leur quartier.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav__inner">
+    <a href="#top" class="nav__brand">Marché Voisin</a>
+    <nav class="nav__links">
+      <a href="#comment-ca-marche">Comment ça marche</a>
+      <a href="#inscription">Inscription</a>
+      <a href="#inscription" class="nav__cta">Rejoindre le marché</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <p class="hero__eyebrow">Étal 00 — Bienvenue</p>
+    <h1 class="hero__title">Le marché de votre<br>quartier, ouvert à tous<br>les vendeurs.</h1>
+    <p class="hero__subtitle">Un espace simple pour installer votre étal en ligne ou trouver ce que vos voisins vendent — sans intermédiaire, sans complication.</p>
+    <div class="hero__actions">
+      <a href="#inscription" class="btn btn--primary" data-role="vendeur">Installer mon étal</a>
+      <a href="#inscription" class="btn btn--ghost" data-role="acheteur">Chercher un produit</a>
+    </div>
+  </section>
+
+  <section class="stats" aria-label="Chiffres du marché">
+    <div class="stats__item">
+      <span class="stats__number" id="stat-vendeurs">0</span>
+      <span class="stats__label">vendeurs installés</span>
+    </div>
+    <div class="stats__divider" aria-hidden="true"></div>
+    <div class="stats__item">
+      <span class="stats__number" id="stat-acheteurs">0</span>
+      <span class="stats__label">acheteurs inscrits</span>
+    </div>
+    <div class="stats__divider" aria-hidden="true"></div>
+    <div class="stats__item">
+      <span class="stats__number" id="stat-total">0</span>
+      <span class="stats__label">membres du marché</span>
+    </div>
+  </section>
+
+  <section class="how" id="comment-ca-marche">
+    <h2 class="section__title">Comment ça marche</h2>
+    <div class="stalls">
+      <article class="stall">
+        <p class="stall__number">Étal 01</p>
+        <h3 class="stall__title">Vous vous inscrivez</h3>
+        <p class="stall__text">Choisissez votre rôle : vendeur pour proposer vos produits, ou acheteur pour les découvrir.</p>
+      </article>
+      <article class="stall">
+        <p class="stall__number">Étal 02</p>
+        <h3 class="stall__title">Vous installez votre profil</h3>
+        <p class="stall__text">Le vendeur décrit sa boutique et ses produits. L'acheteur indique ce qu'il recherche.</p>
+      </article>
+      <article class="stall">
+        <p class="stall__number">Étal 03</p>
+        <h3 class="stall__title">Vous échangez</h3>
+        <p class="stall__text">Les deux profils se retrouvent sur le marché, prêts à faire affaire directement.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="inscription" id="inscription">
+    <h2 class="section__title">Installer votre étal</h2>
+    <p class="section__subtitle">Deux minutes suffisent. Cette démonstration fonctionne sans serveur : les inscriptions s'affichent ci-dessous mais ne sont pas conservées après un rechargement de la page.</p>
+
+    <div class="role-switch" role="tablist" aria-label="Choisir un rôle">
+      <button type="button" class="role-switch__btn is-active" data-role-btn="vendeur" role="tab" aria-selected="true">Je suis vendeur</button>
+      <button type="button" class="role-switch__btn" data-role-btn="acheteur" role="tab" aria-selected="false">Je suis acheteur</button>
+    </div>
+
+    <form id="registration-form" class="form" novalidate>
+      <div class="form__row">
+        <label for="nom">Nom</label>
+        <input type="text" id="nom" name="nom" required autocomplete="name">
+      </div>
+      <div class="form__row">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" required autocomplete="email">
+      </div>
+
+      <div class="form__row form__row--vendeur" data-role-field="vendeur">
+        <label for="boutique">Nom de la boutique</label>
+        <input type="text" id="boutique" name="boutique">
+      </div>
+      <div class="form__row form__row--vendeur" data-role-field="vendeur">
+        <label for="categorie">Catégorie de produits</label>
+        <select id="categorie" name="categorie">
+          <option value="alimentation">Alimentation</option>
+          <option value="artisanat">Artisanat</option>
+          <option value="vetements">Vêtements</option>
+          <option value="maison">Maison &amp; déco</option>
+          <option value="autre">Autre</option>
+        </select>
+      </div>
+
+      <div class="form__row form__row--acheteur" data-role-field="acheteur" hidden>
+        <label for="recherche">Que recherchez-vous ?</label>
+        <input type="text" id="recherche" name="recherche" placeholder="Ex. légumes de saison, poterie faite main…">
+      </div>
+
+      <input type="hidden" id="role" name="role" value="vendeur">
+
+      <button type="submit" class="btn btn--primary form__submit">Installer mon étal</button>
+      <p class="form__confirmation" id="form-confirmation" role="status" hidden></p>
+    </form>
+
+    <div class="member-list" aria-label="Membres inscrits pendant cette visite">
+      <h3 class="member-list__title">Sur le marché aujourd'hui</h3>
+      <ul id="member-list__items" class="member-list__items">
+        <li class="member-list__empty" id="member-list__empty">Aucune inscription pour l'instant — soyez le premier à installer votre étal.</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>Marché Voisin — un marché de quartier, en ligne.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
